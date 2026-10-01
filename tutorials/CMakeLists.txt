@@ -90,3 +90,6 @@ add_subdirectory(Tutorial_703_Cloud_PlaneExtraction)
 #add_subdirectory(Tutorial_805_Mesh_Remeshing)        #TODO
 #add_subdirectory(Tutorial_806_Mesh_Simplification)   #TODO
 #add_subdirectory(Tutorial_807_Mesh_Subdidivision)    #TODO
+
+# custom
+add_subdirectory(extract_plane)
