@@ -47,7 +47,7 @@ void compute_normals(PointCloud* cloud, unsigned int k, bool compute_curvature) 
 
 void downsample(PointCloud* cloud, unsigned int target_num_points) {
     std::vector<PointCloud::Vertex> points_to_remove = PointCloudSimplification::uniform_simplification(cloud, target_num_points);
-    for (const &PointCloud::Vertex v: points_to_remove)
+    for (const PointCloud::Vertex v: points_to_remove)
         cloud->delete_vertex(v);
     if (cloud->has_garbage()) {
         cloud->collect_garbage();
@@ -75,11 +75,11 @@ int main(int argc, char **argv) {
         const std::string input = argv[1];
 
         // harcoded for now
-        const std::string output = input;
-        auto dot_pos = path.find_last_of('.');
+        std::string output = input;
+        auto dot_pos = input.find_last_of('.');
         if (dot_pos != std::string::npos)
-            output = path.substr(0, dot_pos);
-        output.append(".vg");
+            output = input.substr(0, dot_pos);
+        output += ".vg";
 
         unsigned int k = 16;
         bool compute_curvature = false;
@@ -93,7 +93,7 @@ int main(int argc, char **argv) {
         float overlook_probability = 0.001f;
 
 
-        PointCloud* cloud = load(file);
+        PointCloud* cloud = PointCloudIO::load(input);
 
         compute_normals(cloud, k, compute_curvature);
 
@@ -102,7 +102,7 @@ int main(int argc, char **argv) {
         compute_planes(cloud, min_support, dist_threshold, bitmap_resolution,
             normal_threshold, overlook_probability);
 
-        save(output, cloud);
+        PointCloudIO::save(output, cloud);
     }
 
     return 0;
