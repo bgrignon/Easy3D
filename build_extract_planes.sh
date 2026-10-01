@@ -5,7 +5,12 @@ sudo apt-get install -y build-essential cmake libxmu-dev libxi-dev libgl-dev lib
 
 mkdir Release
 cd Release
-cmake -DCMAKE_BUILD_TYPE=Release -DEasy3D_BUILD_SHARED_LIBS=OFF .. # build static library = standalone exe
+# build static library = standalone exe
+cmake .. -DCMAKE_BUILD_TYPE=Release \
+    -DEasy3D_BUILD_STATIC_LIBS=ON \
+    -DBUILD_SHARED_LIBS=OFF \
+    # -DCMAKE_EXE_LINKER_FLAGS="-static" \
+    # -DCMAKE_SHARED_LINKER_FLAGS="-static"
 make
 cd ..
 cp Release/bin/extract_planes .
