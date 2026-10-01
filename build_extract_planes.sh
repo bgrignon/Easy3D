@@ -9,4 +9,5 @@ cmake -DCMAKE_BUILD_TYPE=Release -DEasy3D_BUILD_SHARED_LIBS=OFF .. # build stati
 make
 cd ..
 cp Release/bin/extract_planes .
+cp Release/bin/Mapple .
 rm -rf Release # clean everything we don't need
