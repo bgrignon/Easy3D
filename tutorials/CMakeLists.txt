@@ -92,4 +92,4 @@ add_subdirectory(Tutorial_703_Cloud_PlaneExtraction)
 #add_subdirectory(Tutorial_807_Mesh_Subdidivision)    #TODO
 
 # custom
-add_subdirectory(extract_plane)
+add_subdirectory(extract_planes)
