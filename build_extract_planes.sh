@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install build-essential cmake libxmu-dev libxi-dev libgl-dev libxrandr-dev
+sudo apt-get install -y build-essential cmake libxmu-dev libxi-dev libgl-dev libxrandr-dev
 
 mkdir Release
 cd Release
