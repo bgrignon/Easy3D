@@ -95,9 +95,9 @@ int main(int argc, char **argv) {
 
         PointCloud* cloud = PointCloudIO::load(input);
 
-        compute_normals(cloud, k, compute_curvature);
-
         downsample(cloud, target_num_points);
+
+        compute_normals(cloud, k, compute_curvature);
 
         compute_planes(cloud, min_support, dist_threshold, bitmap_resolution,
             normal_threshold, overlook_probability);
